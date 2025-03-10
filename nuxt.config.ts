@@ -30,7 +30,8 @@ export default defineNuxtConfig({
   googleFonts: {
     display: 'swap',
     families: {
-      Inter: [400, 500, 600, 700],
+      'Inter': [400, 500, 600, 700],
+      'Golos Text': [400, 500, 600, 700],
     },
   },
 })

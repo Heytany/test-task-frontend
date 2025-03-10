@@ -32,7 +32,7 @@ function toaster() {
     </h1>
     <div
       v-if="renderCards"
-      class="grid grid-cols-6 gap-4"
+      class="grid grid-cols-6 gap-[30px]"
     >
       <Card
         v-for="(item, index) in products.data"
