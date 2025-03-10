@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useToast } from '~/components/ui/toast/use-toast'
 import { Button } from '~/components/ui/button'
 import { useApplicationStore } from '~/store/application'
+
 const { AddToStash } = useApplicationStore()
 
 const props = defineProps<{
@@ -27,8 +28,8 @@ function AddProduct() {
 <template>
   <div class="font-[Golos_Text] text-[12px] relative card">
     <NuxtLink
-        class="card__link"
-        :to="props.item.url"
+      class="card__link"
+      :to="props.item.url"
     />
     <div class="card__img-container overflow-hidden rounded-[12px] mb-[12px]">
       <img
@@ -57,9 +58,9 @@ function AddProduct() {
       {{ props.item.name }}
     </p>
     <Button
-        variant="secondary"
-        @click="AddProduct"
-        class="card__btn"
+      variant="secondary"
+      class="card__btn"
+      @click="AddProduct"
     >
       В корзину
     </Button>

@@ -12,15 +12,15 @@ export const useApplicationStore = defineStore('application', () => {
      * Тут у нас должна быть связь с корзиной на сервере, отправка и обновление данных о товаре, все красиво и сепарированно
      */
 
-    UpdateStashCounter(stashCounter.value+1)
+    UpdateStashCounter(stashCounter.value + 1)
   }
 
-  function UpdateStashCounter(payload) {
+  function UpdateStashCounter(payload:number) {
     stashCounter.value = payload
   }
 
   return {
     stashCounter,
-    AddToStash
+    AddToStash,
   }
 })
