@@ -1,3 +1,3 @@
 export const apiPath = {
-    getProducts: '/api/getProducts',
+  getProducts: '/api/getProducts',
 }

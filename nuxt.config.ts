@@ -10,6 +10,12 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      BRAND_NAME: process.env.BRAND_NAME,
+      DEFAULT_LIMIT: process.env.DEFAULT_LIMIT,
+    },
+  },
   compatibilityDate: '2024-11-01',
   vite: {
     plugins: [
@@ -26,11 +32,5 @@ export default defineNuxtConfig({
     families: {
       Inter: [400, 500, 600, 700],
     },
-  },
-  runtimeConfig: {
-    public: {
-      BRAND_NAME: process.env.BRAND_NAME,
-      DEFAULT_LIMIT: process.env.DEFAULT_LIMIT,
-    }
   },
 })
