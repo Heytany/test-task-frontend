@@ -14,7 +14,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       BRAND_NAME: process.env.BRAND_NAME,
-      DEFAULT_LIMIT: process.env.DEFAULT_LIMIT,
+      PRODUCT_FETCH_LIMIT: process.env.PRODUCT_FETCH_LIMIT,
+      AUTHOR: process.env.AUTHOR,
+      GIT_URL: process.env.GIT_URL,
     },
   },
   compatibilityDate: '2024-11-01',

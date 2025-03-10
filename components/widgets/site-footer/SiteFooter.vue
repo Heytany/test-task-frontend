@@ -13,10 +13,12 @@ const runtimeConfig = useRuntimeConfig()
     <div class="text-[14px] pr-[97px]">
       Разработчик <br>
       <a
-        href="https://career.habr.com/heytan"
+        :href="runtimeConfig.public.GIT_URL"
         class="underline hover:no-underline"
         target="_blank"
-      >Алексей Артемьев</a>
+      >
+        {{ runtimeConfig.public.AUTHOR }}
+      </a>
     </div>
   </footer>
 </template>
