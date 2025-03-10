@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, nextTick } from 'vue'
 import { useToast } from '~/components/ui/toast/use-toast'
 import { Button } from '~/components/ui/button'
 import { useApplicationStore } from '~/store/application'
@@ -9,6 +9,13 @@ const { AddToStash } = useApplicationStore()
 const props = defineProps<{
   item: Product
 }>()
+
+const isImgLoaded: Ref<boolean> = ref(false)
+const isImgBlocked: Ref<boolean> = ref(false)
+
+const iconName = computed(() => {
+  return isImgBlocked.value ? 'ic:outline-sync-problem' : 'material-symbols:directory-sync'
+})
 
 const sale = computed(() => {
   return props.item?.oldPrice ? Math.round((props.item.newPrice * 100) / props.item.oldPrice) : 0
@@ -22,6 +29,20 @@ function AddProduct() {
     title: 'Товар добавлен в корзину',
   })
 }
+
+function replaceByBlockedImg() {
+  setTimeout(() => {
+    isImgBlocked.value = true
+  }, 2500)
+}
+
+onMounted(async () => {
+  await nextTick()
+
+  setTimeout(() => {
+    replaceByBlockedImg()
+  }, 2500)
+})
 </script>
 
 <template>
@@ -32,13 +53,23 @@ function AddProduct() {
     />
     <div class="card__img-container overflow-hidden rounded-[12px] mb-[12px]">
       <img
+        v-show="isImgLoaded"
         class="card__img"
         :src="props.item.image"
         :alt="props.item.name"
+        @load="isImgLoaded = true"
+        @error="replaceByBlockedImg"
       >
+      <Icon
+        v-if="!isImgLoaded"
+        :name="iconName"
+        class="text-[48px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        :class="{ 'animate-spin': !isImgBlocked }"
+      />
       <div
         v-if="sale"
-        class="absolute bottom-2 left-2 rounded-[4px] px-[6px] py-[3px] bg-white text-pink-500"
+        class="absolute bottom-2 left-2 rounded-[4px] px-[6px] py-[3px]  text-pink-500"
+        :class="{ 'bg-white': isImgLoaded, 'bg-black': !isImgLoaded }"
       >
         {{ sale }}%
       </div>
