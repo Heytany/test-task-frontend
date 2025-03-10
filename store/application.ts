@@ -1,12 +1,26 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
 /**
  * Хранилище приложения для управления глобальными состояниями.
  */
 export const useApplicationStore = defineStore('application', () => {
-  const welcome = 'Привет!'
+  const stashCounter = ref(0)
+
+  function AddToStash() {
+    /**
+     * Тут у нас должна быть связь с корзиной на сервере, отправка и обновление данных о товаре, все красиво и сепарированно
+     */
+
+    UpdateStashCounter(stashCounter.value+1)
+  }
+
+  function UpdateStashCounter(payload) {
+    stashCounter.value = payload
+  }
 
   return {
-    welcome,
+    stashCounter,
+    AddToStash
   }
 })

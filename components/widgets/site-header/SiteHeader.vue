@@ -1,5 +1,16 @@
 <script lang="ts" setup>
+import {computed} from "vue";
+import { getNoun } from '~/utils/utils'
 const runtimeConfig = useRuntimeConfig()
+import { useApplicationStore } from '~/store/application'
+import { storeToRefs } from 'pinia'
+
+const store = useApplicationStore()
+const { stashCounter } = storeToRefs(store)
+
+const productsCount = computed(() => {
+  return `${stashCounter.value} ${getNoun(stashCounter.value,'товар','товара','товаров')}`
+})
 </script>
 
 <template>
@@ -14,7 +25,7 @@ const runtimeConfig = useRuntimeConfig()
       <Icon
         name="material-symbols:shopping-basket-outline"
         class="text-[32px]"
-      />  12 товаров
+      />  {{productsCount}}
     </div>
   </header>
 </template>

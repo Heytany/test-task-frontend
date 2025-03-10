@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { SiteHeader } from '~/components/widgets/site-header'
 import { SiteFooter } from '~/components/widgets/site-footer'
-import { Toaster } from '~/components/ui/toast/'
 </script>
 
 <template>
@@ -11,8 +10,5 @@ import { Toaster } from '~/components/ui/toast/'
       <slot />
     </main>
     <SiteFooter />
-    <ClientOnly>
-      <Toaster />
-    </ClientOnly>
   </div>
 </template>
