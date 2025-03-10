@@ -24,7 +24,13 @@ export default defineNuxtConfig({
   googleFonts: {
     display: 'swap',
     families: {
-      Roboto: [400, 500, 600, 700],
+      Inter: [400, 500, 600, 700],
     },
+  },
+  runtimeConfig: {
+    public: {
+      BRAND_NAME: process.env.BRAND_NAME,
+      DEFAULT_LIMIT: process.env.DEFAULT_LIMIT,
+    }
   },
 })
