@@ -1,37 +1,50 @@
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import { apiPath } from '~/utils/api'
+import { Button } from '~/components/ui/button'
+import { Card } from '~/components/ui/card'
+import { useToast } from '~/components/ui/toast/use-toast'
+
+const { toast } = useToast()
+const products = ref()
+
+products.value = await useAsyncData('products', async () => {
+  const { products } = await $fetch(apiPath.getProducts)
+  return products
+})
+
+const renderCards = computed(() => {
+  return products.value?.data?.length
+})
+
+function toaster() {
+  toast({
+    title: 'Scheduled: Catch up',
+    description: 'Example',
+  })
+}
+</script>
+
 <template>
   <div>
-    <h1>Тестовая задача</h1>
-    <div class="text-[14px]">
-      <pre>{{ products }}</pre>
+    <h1 class="font-bold text-[32px]">
+      Тестовая задача
+    </h1>
+    <div
+      v-if="renderCards"
+      class="grid grid-cols-6 gap-4"
+    >
+      <Card
+        v-for="(item, index) in products.data"
+        :key="index"
+        :item="item"
+      />
     </div>
     <Button
       variant="outline"
       @click="toaster"
     >
-      Delete
+      Example
     </Button>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useApplicationStore } from '~/store/application'
-import { apiPath } from '~/utils/api'
-import { Button } from '~/components/ui/button'
-import { useToast } from '~/components/ui/toast/use-toast'
-
-const { welcome } = useApplicationStore()
-const { toast } = useToast()
-
-const products = await useAsyncData('products', async () => {
-  const { products } = await $fetch(apiPath.getProducts)
-  return products
-})
-
-function toaster() {
-  console.log('wadawdwa')
-  toast({
-    title: 'Scheduled: Catch up',
-    description: 'Friday, February 10, 2023 at 5:57 PM',
-  })
-}
-</script>

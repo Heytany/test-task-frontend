@@ -15,7 +15,7 @@ declare global {
 export const generateFakeProduct = (): Product => {
   const hasOldPrice = faker.datatype.boolean()
   const newPrice = faker.commerce.price({ min: 100, max: 100000 })
-  const oldPrice = hasOldPrice ? newPrice + faker.commerce.price({ min: 10, max: 10000 }) : undefined
+  const oldPrice = hasOldPrice ? Number(newPrice) + Number(faker.commerce.price({ min: 100, max: 1000 })) : undefined
 
   return {
     image: faker.image.url(),
