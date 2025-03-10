@@ -1,12 +1,15 @@
 import { faker } from '@faker-js/faker';
+import { path } from '~/utils/path'
 
-interface Product {
-    image: string;
-    newPrice: number;
-    oldPrice?: number;
-    brand: string;
-    name: string;
-    url: string;
+declare global {
+    interface Product {
+        image: string;
+        newPrice: number;
+        oldPrice?: number;
+        brand: string;
+        name: string;
+        url: string;
+    }
 }
 
 export const generateFakeProduct = (): Product => {
