@@ -19,8 +19,7 @@ const { toast } = useToast()
 function AddProduct() {
   AddToStash()
   toast({
-    title: 'Добавлен товар',
-    description: props.item.name,
+    title: 'Товар добавлен в корзину',
   })
 }
 </script>

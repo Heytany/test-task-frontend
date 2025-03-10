@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/eslint',
     '@nuxtjs/google-fonts',
+    'shadcn-nuxt',
   ],
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
@@ -33,5 +34,9 @@ export default defineNuxtConfig({
       'Inter': [400, 500, 600, 700],
       'Golos Text': [400, 500, 600, 700],
     },
+  },
+  shadcn: {
+    prefix: '',
+    componentDir: './components/ui',
   },
 })

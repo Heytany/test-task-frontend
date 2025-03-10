@@ -17,7 +17,7 @@ const renderCards = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div class="mt-[32px] mb-[112px]">
     <h1 class="font-bold text-[32px] mb-[24px]">
       Тестовая задача
     </h1>

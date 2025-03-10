@@ -2,8 +2,6 @@
 // @ts-nocheck
 import { camelize, computed, getCurrentInstance, toHandlerKey, toRef } from 'vue'
 
-// fixed functions for run build stage
-
 function useEmitAsProps(emit) {
   const vm = getCurrentInstance()
   const events = vm?.type.emits

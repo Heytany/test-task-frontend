@@ -15,7 +15,7 @@ export const useApplicationStore = defineStore('application', () => {
     UpdateStashCounter(stashCounter.value + 1)
   }
 
-  function UpdateStashCounter(payload:number) {
+  function UpdateStashCounter(payload: number) {
     stashCounter.value = payload
   }
 
