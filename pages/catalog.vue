@@ -7,7 +7,7 @@ import { Card } from '~/components/ui/card'
 const products = ref()
 
 products.value = await useAsyncData('products', async () => {
-  const { products } = await $fetch(apiPath.getProducts)
+  const { products } = await $fetch<{ products: Product[] }>(apiPath.getProducts)
   return products
 })
 
